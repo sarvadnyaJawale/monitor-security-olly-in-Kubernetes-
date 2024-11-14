@@ -9,14 +9,15 @@ prometheus:
         operator: In
         values:
         - example-rules
-grafana:
-  sidecar:
-    datasources:
-      defaultDatasourceEnabled: true
-  additionalDataSources:
-  - name: Loki
-    type: loki
-    url: http://loki-loki-distributed-query-frontend.monitoring:3100
+        - cluster_scanning_rule
+# grafana:
+#   sidecar:
+#     datasources:
+#       defaultDatasourceEnabled: true
+#   additionalDataSources:
+#   - name: Loki
+#     type: loki
+#     url: http://loki-loki-distributed-query-frontend.monitoring:3100
 
 alertmanager:
   config:

@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: cluster_scanning_rule
+    role: alert-rules
+  name: prom-rule-2
+spec:
+  groups:
+  - name: VulnerabilityAlerts
+    rules:
+    - alert: TrivyCriticalVulnerabilitiesDetected
+      expr: |
+        trivy_vulnerability_severity_count{severity="CRITICAL"} > 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Critical Vulnerabilities Detected by Trivy"
+        description: |
+          Trivy has detected critical vulnerabilities in the cluster. Severity is critical,
+          requiring immediate attention.
+        details: |
+          Vulnerabilities of critical severity have been reported by Trivy for workloads in the cluster.
+          Review and mitigate these issues immediately to secure the environment.
