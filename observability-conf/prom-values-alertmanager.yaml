@@ -4,27 +4,27 @@ prometheus:
     serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
     ruleSelector:
-       matchExpressions:
-        - key: prometheus
-          operator: In
-          values:
-          - example-rules
+      matchExpressions:
+      - key: prometheus
+        operator: In
+        values:
+        - example-rules
 grafana:
   sidecar:
     datasources:
       defaultDatasourceEnabled: true
   additionalDataSources:
-    - name: Loki
-      type: loki
-      url: http://loki-loki-distributed-query-frontend.monitoring:3100
+  - name: Loki
+    type: loki
+    url: http://loki-loki-distributed-query-frontend.monitoring:3100
 
 alertmanager:
   config:
     global:
       resolve_timeout: 5m
-      slack_api_url: "https://hooks.slack.com/services/XXX"
+      slack_api_url: "https://hooks.slack.com/services/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"
     route:
-      group_by: ['job']
+      group_by: [ 'job' ]
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
