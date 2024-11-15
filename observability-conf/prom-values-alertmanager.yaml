@@ -18,12 +18,11 @@ prometheus:
 #   - name: Loki
 #     type: loki
 #     url: http://loki-loki-distributed-query-frontend.monitoring:3100
-
 alertmanager:
   config:
     global:
       resolve_timeout: 5m
-      slack_api_url: "https://hooks.slack.com/services/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"
+      slack_api_url: "https://hooks.slack.com/services/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"
     route:
       group_by: [ 'job' ]
       group_wait: 30s

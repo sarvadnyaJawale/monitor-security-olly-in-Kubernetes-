@@ -4,15 +4,15 @@ metadata:
   labels:
     prometheus: cluster_scanning_rule
     role: alert-rules
-  name: prom-rule-2
+  name: prom-trivy-scanner-rules
+  namespace: monitoring
 spec:
   groups:
   - name: VulnerabilityAlerts
     rules:
     - alert: TrivyCriticalVulnerabilitiesDetected
-      expr: |
-        trivy_vulnerability_severity_count{severity="CRITICAL"} > 0
-      for: 5m
+      expr: sum(trivy_image_vulnerabilities{severity="Critical"}) > 0
+      for: 30s
       labels:
         severity: critical
       annotations:
