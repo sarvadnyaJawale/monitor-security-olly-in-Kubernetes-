@@ -125,3 +125,20 @@ Note that Trivy also has a custom Dashboard -- [the ID: 17813 ]
 ![Vulnerability stats](./assets/vulnerabilities.png)
 
 ![Tracee logs](./assets/traceelogs.png)
+
+## Trivy - Prometheus - Slack
+Technical Flow Summary
+Trivy (Vulnerability Scanner):
+
+Runs scans → Generates metrics → Exposes metrics via /metrics.
+Prometheus:
+
+Scrapes metrics from Trivy → Evaluates rules → Triggers alerts for critical conditions.
+AlertManager:
+
+Receives alerts from Prometheus → Routes alerts to Slack based on routing rules.
+Slack:
+
+Displays notifications to the configured channel for operational visibility.
+![Workflow-diagram](https://github.com/user-attachments/assets/5b87b3b5-8ea9-47bd-a2be-2a8529d7cc82)
+
